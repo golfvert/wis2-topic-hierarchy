@@ -26,7 +26,18 @@ jobs:
           rm wis2-topic-hierarchy-a.zip
           mv wis2-topic-hierarchy-a/* .
           rmdir wis2-topic-hierarchy-a
+          grep "/" earth-system-discipline.csv | while read -r line; do printf %s "$line" | md5; done > earth-system-discipline-and-below.md5.txt
+          rm centre-id.csv
+          rm channel.csv
+          tail -n+2 notification-type.csv | awk -F, '{print $1}' > notification-type.txt
+          tail -n+2 data-policy.csv | awk -F, '{print $1}' > data-policy.txt
+          rm notification-type.csv
+          rm earth-system-discipline.csv
+          rm system.csv
+          rm channel.csv
+          rm version.csv
+          rm data-policy.csv
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update csv files
+          commit_message: Update changed files
