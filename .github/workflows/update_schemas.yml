@@ -9,12 +9,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  download:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+    
     steps:
+      - uses: actions/checkout@v4
+      
       - name: Get schemas bundle
         id: get_bundle
         run: |
           curl -s https://schemas.wmo.int/wth/a/bundle/wis2-topic-hierarchy-a.zip
+          unzip wis2-topic-hierarchy-a.zip
+          rm wis2-topic-hierarchy-a.zip
+          mv wis2-topic-hierarchy-a/* .
+          rmdir wis2-topic-hierarchy-a
 
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update csv files
