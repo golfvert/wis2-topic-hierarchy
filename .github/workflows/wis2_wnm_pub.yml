@@ -1,0 +1,18 @@
+name: Publish WIS2 Notification Messages
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: mosquitto mosquitto-clients
+          version: 1.0
