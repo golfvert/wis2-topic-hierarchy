@@ -12,7 +12,6 @@ jobs:
       contents: write
     
     steps:
-      - name: Install mqttx
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
