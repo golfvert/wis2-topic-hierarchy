@@ -1,4 +1,4 @@
-name: Publish WIS2 Notification Messages
+name: Publish WIS2 Notification Messages with npm
 
 # Controls when the workflow will run
 on:
