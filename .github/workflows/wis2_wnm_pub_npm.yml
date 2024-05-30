@@ -1,0 +1,32 @@
+name: Publish WIS2 Notification Messages
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Install mqttx
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: |
+          npm install mqttx-cli -g
+          
+      - name: Send message
+        env:
+          MQTT_BROKER_HOST: ${{ secrets.MQTT_BROKER_HOST}}
+          MQTT_USERNAME: ${{ secrets.MQTT_USERNAME}}
+          MQTT_PASSWORD: ${{ secrets.MQTT_PASSWORD}}
+          
+        run: |
+          mqttx pub -h $MQTT_BROKER_HOST -p 8883 -l mqtts --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
+          
