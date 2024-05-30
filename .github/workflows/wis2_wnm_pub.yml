@@ -19,10 +19,10 @@ jobs:
         
       - name: Send message
         env:
-          MQTT_BROKER_NAME: ${{ secrets.MQTT_BROKER_HOSTS}}
+          MQTT_BROKER_HOST: ${{ secrets.MQTT_BROKER_HOST}}
           MQTT_USERNAME: ${{ secrets.MQTT_USERNAME}}
           MQTT_PASSWORD: ${{ secrets.MQTT_PASSWORD}}
           
         run: |
-          mosquitto_pub -h $MQTT_BROKER_NAME -p 8883 --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
+          mosquitto_pub -h $MQTT_BROKER_HOST -p 8883 --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
           
