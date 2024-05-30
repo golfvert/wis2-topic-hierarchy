@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Install mqttx
         run: |
-          curl -LO https://www.emqx.com/zh/downloads/MQTTX/${version}/mqttx-cli-linux-x64
+          curl -LO https://www.emqx.com/zh/downloads/MQTTX/1.9.0/mqttx-cli-linux-x64
           sudo install ./mqttx-cli-linux-x64 /usr/local/bin/mqttx
 
       - name: Send message
