@@ -12,11 +12,11 @@ jobs:
       contents: write
     
     steps:
-      - uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: mosquitto mosquitto-clients
-          version: 1.0
-        
+      - name: Install mqttx
+        run: |
+          curl -LO https://www.emqx.com/zh/downloads/MQTTX/${version}/mqttx-cli-linux-x64
+          sudo install ./mqttx-cli-linux-x64 /usr/local/bin/mqttx
+
       - name: Send message
         env:
           MQTT_BROKER_HOST: ${{ secrets.MQTT_BROKER_HOST}}
@@ -24,5 +24,5 @@ jobs:
           MQTT_PASSWORD: ${{ secrets.MQTT_PASSWORD}}
           
         run: |
-          mosquitto_pub -h $MQTT_BROKER_HOST -p 8883 --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
+          mqttx pub -h $MQTT_BROKER_HOST -p 8883 -l mqtts --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
           
