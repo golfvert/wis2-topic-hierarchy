@@ -20,6 +20,13 @@ jobs:
         run: |
           curl https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
           mv jq-linux-amd4 jq
+      - name: Get WNM files
+        uses: actions/checkout@v4
+        with:
+          path: gh-pages
+          sparse-checkout: |
+               test-data/notifications/wnm.zip
+          sparse-checkout-cone-mode: false
 
       - name: Send message
         env:
@@ -28,5 +35,14 @@ jobs:
           MQTT_PASSWORD: ${{ secrets.MQTT_PASSWORD}}
           
         run: |
-          mqttx pub -h $MQTT_BROKER_HOST -p 8883 -l mqtts --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
+          unzip wnm.zip
+          rm wnm.zip
+
+          cd wnm
+
+          for file in .
+          do
+            wnm = `cat $file`
+            mqttx pub -h $MQTT_BROKER_HOST -p 8883 -l mqtts --insecure -u $MQTT_USERNAME -P $MQTT_PASSWORD -t origin/a/wis2/test -m "from github" 
+          done
           
