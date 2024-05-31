@@ -16,6 +16,10 @@ jobs:
         run: |
           curl -LO https://www.emqx.com/zh/downloads/MQTTX/1.9.0/mqttx-cli-linux-x64
           sudo install ./mqttx-cli-linux-x64 /usr/local/bin/mqttx
+      - name: Install jq (JSON parser)
+        run: |
+          curl https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+          mv jq-linux-amd4 jq
 
       - name: Send message
         env:
