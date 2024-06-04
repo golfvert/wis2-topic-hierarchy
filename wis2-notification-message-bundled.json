@@ -223,23 +223,19 @@
                 "properties": {
                   "rel": {
                     "type": "string",
-                    "description": "The type or semantics of the relation.",
-                    "example": "alternate"
+                    "description": "The type or semantics of the relation."
                   },
                   "type": {
                     "type": "string",
-                    "description": "A hint indicating what the media type of the result of dereferencing the link should be.",
-                    "example": "application/geo+json"
+                    "description": "A hint indicating what the media type of the result of dereferencing the link should be."
                   },
                   "hreflang": {
                     "type": "string",
-                    "description": "A hint indicating what the language of the result of dereferencing the link should be.",
-                    "example": "en"
+                    "description": "A hint indicating what the language of the result of dereferencing the link should be."
                   },
                   "title": {
                     "type": "string",
-                    "description": "Used to label the destination of a link such that it can be used as a human-readable identifier.",
-                    "example": "Trierer Strasse 70, 53115 Bonn"
+                    "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
                   },
                   "length": {
                     "type": "integer"
@@ -254,8 +250,7 @@
                 "properties": {
                   "href": {
                     "type": "string",
-                    "description": "The URI of the link target.",
-                    "example": "http://data.example.com/buildings/123"
+                    "description": "The URI of the link target."
                   }
                 }
               }
@@ -292,45 +287,6 @@
     "properties",
     "links"
   ],
-  "example": {
-    "id": "31e9d66a-cd83-4174-9429-b932f1abe1be",
-    "version": "v04",
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        6.146255135536194,
-        46.223296618227444
-      ]
-    },
-    "properties": {
-      "pubtime": "2022-03-20T04:50:18.314854383Z",
-      "datetime": "2022-03-20T04:45:00Z",
-      "integrity": {
-        "method": "sha512",
-        "value": "A2KNxvks...S8qfSCw=="
-      },
-      "data_id": "dataset/123/data-granule/UANT01_CWAO_200445___15103.bufr4",
-      "metadata_id": "urn:wmo:md:ca-eccc-msc:observations.swob",
-      "content": {
-        "encoding": "utf-8",
-        "value": "encoded bytes from the file",
-        "size": 457
-      }
-    },
-    "links": [
-      {
-        "href": "https://example.org/data/4Pubsub/92c557ef-d28e-4713-91af-2e2e7be6f8ab.bufr4",
-        "rel": "canonical",
-        "type": "application/x-bufr"
-      },
-      {
-        "href": "https://example.org/oapi/collections/my-dataset/items/my-data-granule",
-        "rel": "item",
-        "type": "application/json"
-      }
-    ]
-  },
   "definitions": {
     "Schema_APIKeySecurityScheme": {
       "type": "object",
