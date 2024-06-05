@@ -5,10 +5,14 @@ jobs:
   example:
     runs-on: ubuntu-latest
     steps:
+      - name: 'Remove jq'
+        run: |
+          sudo apt-get purge --auto-remove jq
+ 
       - name: 'Setup jq'
         uses: dcarbone/install-jq-action@v2
         with:
-          version: 1.7.1
+          version: 1.7
           force: true
 
       - name: 'Check jq'
