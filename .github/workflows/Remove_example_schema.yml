@@ -14,17 +14,15 @@ jobs:
       contents: write
     
     steps:
+      - uses: actions/checkout@v4
+      
       - name: Get full schema
         run: |
           curl -O https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
           
-      - name: Install jq (JSON parser)
-        run: |
-          sudo apt-get install jq
-          
       - name: Delete offending keys in schema file
         run: |
-          cat wis2-notification-message-bundled.json | jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | jq 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | jq 'del (.example)' > wis2-notification-message.json
+          jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' wis2-notification-message-bundled.json > wis2-notification-messge.json
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
