@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: Get full schema
         run: |
-          curl https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
+          curl -O https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
           
       - name: Install jq (JSON parser)
         run: |
-          curl https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+          curl -O https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
           mv jq-linux-amd4 jq
           
       - name: Delete offending keys in schema file
