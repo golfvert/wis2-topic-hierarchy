@@ -22,7 +22,7 @@ jobs:
           
       - name: Delete offending keys in schema file
         run: |
-          jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' wis2-notification-message-bundled.json > wis2-notification-messge.json
+          jq --version
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
