@@ -1,0 +1,32 @@
+name: Remove Examples in Official WNM Schema
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Get full schema
+        run: |
+          curl https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
+          
+      - name: Install jq (JSON parser)
+        run: |
+          curl https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+          mv jq-linux-amd4 jq
+          
+      - name: Delete offending keys in schema file
+        run: |
+          cat wis2-notification-message-bundled.json | jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | jq 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | jq 'del (.example)' > wis2-notification-message.json
+          
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update changed files
