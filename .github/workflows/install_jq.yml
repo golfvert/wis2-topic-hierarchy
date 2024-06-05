@@ -12,7 +12,7 @@ jobs:
       - name: 'Setup jq'
         uses: dcarbone/install-jq-action@v2
         with:
-          version: 1.7
+          version: 1.7.1
           force: true
 
       - name: 'Check jq'
