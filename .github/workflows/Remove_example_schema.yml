@@ -19,6 +19,7 @@ jobs:
       - name: Download new jq
         run: |
           curl -O https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+          chmod +x jq-linux-amd64
           
       - name: Get full schema
         run: |
