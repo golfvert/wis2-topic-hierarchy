@@ -24,10 +24,11 @@ jobs:
       - name: Get full schema
         run: |
           curl -O https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
+          cat wis2-notification-message-bundled.json
           
       - name: Delete offending keys in schema file
         run: |
-          ./jq-linux-amd64 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' wis2-notification-message-bundled.json > wis2-notification-message.json
+          ./jq-linux-amd64 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' wis2-notification-message-bundled.json
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
