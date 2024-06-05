@@ -33,6 +33,10 @@ jobs:
       - name: Delete offending keys in schema file
         run: |
           cat wis2-notification-message-bundled.json | jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | jq 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | jq 'del (.example)' > wis2-notification-message.json
+
+      - name: Delete temp files
+        run: |
+          rm wis2-notification-message-bundled.json
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
