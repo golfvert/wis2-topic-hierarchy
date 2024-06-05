@@ -15,14 +15,18 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      
+
+      - name: Download new jq
+        run: |
+          curl -O https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+          
       - name: Get full schema
         run: |
           curl -O https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
           
       - name: Delete offending keys in schema file
         run: |
-          jq --version
+          ./jq-linux-amd64 --version
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
