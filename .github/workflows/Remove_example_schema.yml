@@ -27,7 +27,7 @@ jobs:
           
       - name: Delete offending keys in schema file
         run: |
-          ./jq-linux-amd64 --version
+          cat wis2-notification-message-bundled.json | ./jq-linux-amd64 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | ./jq-linux-amd64 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | ./jq-linux-amd64 'del (.example)' > wis2-notification-message.json
           
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
