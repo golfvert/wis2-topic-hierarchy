@@ -13,7 +13,10 @@
     "version": {
       "type": "string",
       "description": "Version of message specification.",
-      "const": "v04"
+      "enum": [
+        "v04",
+        "v1.0"
+      ]
     },
     "type": {
       "type": "string",
