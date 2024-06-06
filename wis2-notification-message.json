@@ -10,25 +10,11 @@
       "format": "uuid",
       "description": "UUID (RFC4122) - Guarantee uniqueness of the message over (at least) a 24h period."
     },
-   "version": {
+    "version": {
       "type": "string",
       "description": "Version of message specification.",
-      "enum": [
-         "v04",
-         "v1.0"
-      ]
-   },
-   "conformsTo": {
-      "type": "string",
-      "description": "Conformance of message specification",
-      "enum": [
-         "http://wis.wmo.int/spec/wnm/1/conf/core"
-      ]
-   },
-   "oneOf": [
-      "version",
-      "conformsTo"
-   ],
+      "const": "v04"
+    },
     "type": {
       "type": "string",
       "enum": [
