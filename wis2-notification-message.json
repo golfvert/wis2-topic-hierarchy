@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://schemas.wmo.int/wnm/1.0/schemas/wis2-notification-message-bundled.json",
   "title": "WIS2 Notification Message Encoding",
   "description": "WIS2 Notification Message Encoding",
@@ -13,9 +13,12 @@
     "conformsTo": {
       "type": "array",
       "items": {
-        "type": "string",
-        "example": "http://wis.wmo.int/spec/wnm/1/conf/core"
+        "type": "string"
       }
+      "contains": {
+        "const": "http://wis.wmo.int/spec/wnm/1/conf/core"
+      },
+      "uniqueItems": true
     },
     "version": {
       "type": "string",
