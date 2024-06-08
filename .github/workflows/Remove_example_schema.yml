@@ -31,11 +31,11 @@ jobs:
           curl -O https://raw.githubusercontent.com/wmo-im/wis2-notification-message/main/schemas/wis2-notification-message-bundled.json
           
       - name: Delete offending keys in schema file
-        run: |
-          cat wis2-notification-message-bundled.json | jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | \
-                jq 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | jq 'del (.example)' | \ 
-                jq 'del(.properties.conformsTo)' | jq 'del (."$schema")' \
-                jq '.properties.conformsTo += {"type":"array","items":{"type":"string"},"contains":{"const":"http://wis.wmo.int/spec/wnm/1/conf/core"},"uniqueItems":true}' \
+        run: >
+          cat wis2-notification-message-bundled.json | jq 'del(.properties.links.items.allOf[0].allOf[0].properties.[].example)' | 
+                jq 'del (.properties.links.items.allOf[0].allOf[1].properties.href.example)' | jq 'del (.example)' | 
+                jq 'del(.properties.conformsTo)' | jq 'del (."$schema")' | 
+                jq '.properties.conformsTo += {"type":"array","items":{"type":"string"},"contains":{"const":"http://wis.wmo.int/spec/wnm/1/conf/core"},"uniqueItems":true}' 
                 > wis2-notification-message.json
 
       - name: Delete temp files
