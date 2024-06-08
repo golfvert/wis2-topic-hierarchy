@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schemas.wmo.int/wnm/1.0/schemas/wis2-notification-message-1.0.json",
+  "$id": "https://schemas.wmo.int/wnm/1.0/schemas/wis2-notification-message-bundled.json",
   "title": "WIS2 Notification Message Encoding",
   "description": "WIS2 Notification Message Encoding",
   "type": "object",
@@ -10,9 +10,16 @@
       "format": "uuid",
       "description": "UUID (RFC4122) - Guarantee uniqueness of the message over (at least) a 24h period."
     },
+    "conformsTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "http://wis.wmo.int/spec/wnm/1/conf/core"
+      }
+    },
     "version": {
       "type": "string",
-      "description": "Version of message specification.",
+      "description": "DEPRECATED, please use `conformsTo`.",
       "const": "v04"
     },
     "type": {
@@ -279,13 +286,27 @@
       }
     }
   },
-  "required": [
-    "id",
-    "version",
-    "type",
-    "geometry",
-    "properties",
-    "links"
+  "oneOf": [
+    {
+      "required": [
+        "id",
+        "conformsTo",
+        "type",
+        "geometry",
+        "properties",
+        "links"
+      ]
+    },
+    {
+      "required": [
+        "id",
+        "version",
+        "type",
+        "geometry",
+        "properties",
+        "links"
+      ]
+    }
   ],
   "definitions": {
     "Schema_APIKeySecurityScheme": {
