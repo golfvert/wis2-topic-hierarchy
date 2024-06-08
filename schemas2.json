@@ -237,7 +237,7 @@
                                     },
                                     "type": {
                                         "type": "string",
-                                        "description": "A hint indicating what the media type of the result of dereferencing the link should be.",
+                                        "description": "A hint indicating what the media type of the result of dereferencing the link should be."
                                     },
                                     "hreflang": {
                                         "type": "string",
