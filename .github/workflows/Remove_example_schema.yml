@@ -28,7 +28,7 @@ jobs:
           
       - name: Get full schema
         run: |
-          curl -O https://schemas.wmo.int/wnm/1.0.0/schemas/wis2-notification-message-bundled.json
+          curl -O https://raw.githubusercontent.com/wmo-im/wis2-notification-message/main/schemas/wis2-notification-message-bundled.json
           
       - name: Delete offending keys in schema file
         run: |
