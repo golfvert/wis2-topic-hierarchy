@@ -13,10 +13,9 @@
     "conformsTo": {
       "type": "array",
       "items": {
-        "type": "string"
-        "const": [
-           "http://wis.wmo.int/spec/wnm/1/conf/core"
-        ]
+        "type": "string",
+        "example": "http://wis.wmo.int/spec/wnm/1/conf/core"
+      }
     },
     "version": {
       "type": "string",
