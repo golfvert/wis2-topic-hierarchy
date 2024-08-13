@@ -21,7 +21,7 @@ jobs:
       - name: Get schemas bundle
         id: get_bundle
         run: |
-          curl -o  wis2-topic-hierarchy-a.zip https://schemas.wmo.int/wth/a/bundle/wis2-topic-hierarchy-a.zip
+          curl -o  wis2-topic-hierarchy-a.zip https://wmo-im.github.io/wis2-topic-hierarchy/wth-bundle.zip
           unzip wis2-topic-hierarchy-a.zip
           rm wis2-topic-hierarchy-a.zip
           mv wis2-topic-hierarchy-a/* .
