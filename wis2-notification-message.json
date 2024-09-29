@@ -12,9 +12,7 @@
     "version": {
       "type": "string",
       "description": "DEPRECATED, please use `conformsTo`.",
-      "enum": [
-        "v04"
-      ]
+      "const": "v04"
     },
     "type": {
       "type": "string",
