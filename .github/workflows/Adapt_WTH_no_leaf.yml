@@ -24,8 +24,8 @@ jobs:
           curl -o  wis2-topic-hierarchy-a.zip https://wmo-im.github.io/wis2-topic-hierarchy/wth-bundle.zip
           unzip wis2-topic-hierarchy-a.zip
           rm wis2-topic-hierarchy-a.zip
-          # cat earth-system-discipline.csv | tr -d "\r" | while read -r line; do if [ $(grep -c $line earth-system-discipline.csv) -eq 1 ]; then echo -n $line | md5sum | grep -o '^\S\+' ; fi; done > earth-system-discipline-and-below.md5.txt
-          cat earth-system-discipline.csv | tr -d "\r" | while read -r line; do if [ $(grep -c $line earth-system-discipline.csv) -eq 1 ]; then echo -n $line | grep -o '^\S\+' ; fi; done > earth-system-discipline-and-below.txt
+          cat earth-system-discipline.csv | tr -d "\r" | while read -r line; do if [ $(grep -c $line/ earth-system-discipline.csv) -eq 0 ]; then echo -n $line | md5sum | grep -o '^\S\+' ; fi; done > earth-system-discipline-and-below.md5.txt
+          # cat earth-system-discipline.csv | tr -d "\r" | while read -r line; do if [ $(grep -c $line earth-system-discipline.csv) -eq 1 ]; then echo -n $line | grep -o '^\S\+' ; fi; done > earth-system-discipline-and-below.txt
           tail -n+2 notification-type.csv | awk -F, '{print $1}' > notification-type.txt
           tail -n+2 data-policy.csv | awk -F, '{print $1}' > data-policy.txt
           rm notification-type.csv
